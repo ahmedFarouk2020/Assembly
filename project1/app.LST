@@ -1,0 +1,751 @@
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.00d
+OBJECT MODULE PLACED IN app.OBJ
+ASSEMBLER INVOKED BY: C:\SiLabs\MCU\IDEfiles\C51\BIN\a51.exe app.asm XR GEN DB EP NOMOD51
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     $nomod51         ;to suppress the pre-defined addresses by keil
+                       2     ;$include (C8051F020.INC) ; to declare the device peripherals with it's addresses
+                +1     3     ;-----------------------------------------------------------------------------
+                +1     4     ;       
+                +1     5     ;       
+                +1     6     ;
+                +1     7     ;
+                +1     8     ;       FILE NAME       : C8051F020.INC 
+                +1     9     ;       TARGET MCUs     : C8051F020, 'F021, 'F022, 'F023 
+                +1    10     ;       DESCRIPTION     : Register/bit definitions for the C8051F02x product family.  
+                +1    11     ;
+                +1    12     ;       REVISION 1.0    
+                +1    13     ;
+                +1    14     ;-----------------------------------------------------------------------------
+                +1    15     ;REGISTER DEFINITIONS
+                +1    16     ;
+  0080          +1    17     P0       DATA  080H   ; PORT 0
+  0081          +1    18     SP       DATA  081H   ; STACK POINTER
+  0082          +1    19     DPL      DATA  082H   ; DATA POINTER - LOW BYTE
+  0083          +1    20     DPH      DATA  083H   ; DATA POINTER - HIGH BYTE
+  0084          +1    21     P4       DATA  084H   ; PORT 4
+  0085          +1    22     P5       DATA  085H   ; PORT 5
+  0086          +1    23     P6       DATA  086H   ; PORT 6
+  0087          +1    24     PCON     DATA  087H   ; POWER CONTROL
+  0088          +1    25     TCON     DATA  088H   ; TIMER CONTROL
+  0089          +1    26     TMOD     DATA  089H   ; TIMER MODE
+  008A          +1    27     TL0      DATA  08AH   ; TIMER 0 - LOW BYTE
+  008B          +1    28     TL1      DATA  08BH   ; TIMER 1 - LOW BYTE
+  008C          +1    29     TH0      DATA  08CH   ; TIMER 0 - HIGH BYTE
+  008D          +1    30     TH1      DATA  08DH   ; TIMER 1 - HIGH BYTE
+  008E          +1    31     CKCON    DATA  08EH   ; CLOCK CONTROL
+  008F          +1    32     PSCTL    DATA  08FH   ; PROGRAM STORE R/W CONTROL
+  0090          +1    33     P1       DATA  090H   ; PORT 1
+  0091          +1    34     TMR3CN   DATA  091H   ; TIMER 3 CONTROL
+  0092          +1    35     TMR3RLL  DATA  092H   ; TIMER 3 RELOAD REGISTER - LOW BYTE
+  0093          +1    36     TMR3RLH  DATA  093H   ; TIMER 3 RELOAD REGISTER - HIGH BYTE
+  0094          +1    37     TMR3L    DATA  094H   ; TIMER 3 - LOW BYTE
+  0095          +1    38     TMR3H    DATA  095H   ; TIMER 3 - HIGH BYTE
+  0096          +1    39     P7       DATA  096H   ; PORT 7
+  0098          +1    40     SCON0    DATA  098H   ; SERIAL PORT 0 CONTROL
+  0099          +1    41     SBUF0    DATA  099H   ; SERIAL PORT 0 BUFFER
+  009A          +1    42     SPI0CFG  DATA  09AH   ; SERIAL PERIPHERAL INTERFACE 0 CONFIGURATION
+  009B          +1    43     SPI0DAT  DATA  09BH   ; SERIAL PERIPHERAL INTERFACE 0 DATA
+  009C          +1    44     ADC1     DATA  09CH   ; ADC 1 DATA
+  009D          +1    45     SPI0CKR  DATA  09DH   ; SERIAL PERIPHERAL INTERFACE 0 CLOCK RATE CONTROL
+  009E          +1    46     CPT0CN   DATA  09EH   ; COMPARATOR 0 CONTROL
+  009F          +1    47     CPT1CN   DATA  09FH   ; COMPARATOR 1 CONTROL 
+  00A0          +1    48     P2       DATA  0A0H   ; PORT 2
+  00A1          +1    49     EMI0TC   DATA  0A1H   ; EMIF TIMING CONTROL
+  00A3          +1    50     EMI0CF   DATA  0A3H   ; EXTERNAL MEMORY INTERFACE (EMIF) CONFIGURATION
+  00A4          +1    51     P0MDOUT  DATA  0A4H   ; PORT 0 OUTPUT MODE CONFIGURATION
+  00A5          +1    52     P1MDOUT  DATA  0A5H   ; PORT 1 OUTPUT MODE CONFIGURATION
+  00A6          +1    53     P2MDOUT  DATA  0A6H   ; PORT 2 OUTPUT MODE CONFIGURATION
+  00A7          +1    54     P3MDOUT  DATA  0A7H   ; PORT 3 OUTPUT MODE CONFIGURATION
+  00A8          +1    55     IE       DATA  0A8H   ; INTERRUPT ENABLE
+  00A9          +1    56     SADDR0   DATA  0A9H   ; SERIAL PORT 0 SLAVE ADDRESS
+  00AA          +1    57     ADC1CN  DATA  0AAH   ; ADC 1 CONTROL
+  00AB          +1    58     ADC1CF   DATA  0ABH   ; ADC 1 ANALOG MUX CONFIGURATION
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     2
+
+  00AC          +1    59     AMX1SL   DATA  0ACH   ; ADC 1 ANALOG MUX CHANNEL SELECT
+  00AD          +1    60     P3IF     DATA  0ADH   ; PORT 3 EXTERNAL INTERRUPT FLAGS
+  00AE          +1    61     SADEN1   DATA  0AEH   ; SERIAL PORT 1 SLAVE ADDRESS MASK
+  00AF          +1    62     EMI0CN   DATA  0AFH   ; EXTERNAL MEMORY INTERFACE CONTROL
+  00B0          +1    63     P3       DATA  0B0H   ; PORT 3
+  00B1          +1    64     OSCXCN   DATA  0B1H   ; EXTERNAL OSCILLATOR CONTROL
+  00B2          +1    65     OSCICN   DATA  0B2H   ; INTERNAL OSCILLATOR CONTROL
+  00B5          +1    66     P74OUT   DATA  0B5H   ; PORTS 4 - 7 OUTPUT MODE
+  00B6          +1    67     FLSCL    DATA  0B6H   ; FLASH MEMORY TIMING PRESCALER
+  00B7          +1    68     FLACL    DATA  0B7H   ; FLASH ACESS LIMIT 
+  00B8          +1    69     IP       DATA  0B8H   ; INTERRUPT PRIORITY
+  00B9          +1    70     SADEN0   DATA  0B9H   ; SERIAL PORT 0 SLAVE ADDRESS MASK
+  00BA          +1    71     AMX0CF   DATA  0BAH   ; ADC 0 MUX CONFIGURATION
+  00BB          +1    72     AMX0SL   DATA  0BBH   ; ADC 0 MUX CHANNEL SELECTION
+  00BC          +1    73     ADC0CF   DATA  0BCH   ; ADC 0 CONFIGURATION
+  00BD          +1    74     P1MDIN   DATA  0BDH   ; PORT 1 INPUT MODE
+  00BE          +1    75     ADC0L    DATA  0BEH   ; ADC 0 DATA - LOW BYTE
+  00BF          +1    76     ADC0H    DATA  0BFH   ; ADC 0 DATA - HIGH BYTE 
+  00C0          +1    77     SMB0CN   DATA  0C0H   ; SMBUS 0 CONTROL
+  00C1          +1    78     SMB0STA  DATA  0C1H   ; SMBUS 0 STATUS
+  00C2          +1    79     SMB0DAT  DATA  0C2H   ; SMBUS 0 DATA 
+  00C3          +1    80     SMB0ADR  DATA  0C3H   ; SMBUS 0 SLAVE ADDRESS
+  00C4          +1    81     ADC0GTL  DATA  0C4H   ; ADC 0 GREATER-THAN REGISTER - LOW BYTE
+  00C5          +1    82     ADC0GTH  DATA  0C5H   ; ADC 0 GREATER-THAN REGISTER - HIGH BYTE
+  00C6          +1    83     ADC0LTL  DATA  0C6H   ; ADC 0 LESS-THAN REGISTER - LOW BYTE
+  00C7          +1    84     ADC0LTH  DATA  0C7H   ; ADC 0 LESS-THAN REGISTER - HIGH BYTE
+  00C8          +1    85     T2CON    DATA  0C8H   ; TIMER 2 CONTROL
+  00C9          +1    86     T4CON    DATA  0C9H   ; TIMER 4 CONTROL
+  00CA          +1    87     RCAP2L   DATA  0CAH   ; TIMER 2 CAPTURE REGISTER - LOW BYTE
+  00CB          +1    88     RCAP2H   DATA  0CBH   ; TIMER 2 CAPTURE REGISTER - HIGH BYTE
+  00CC          +1    89     TL2      DATA  0CCH   ; TIMER 2 - LOW BYTE
+  00CD          +1    90     TH2      DATA  0CDH   ; TIMER 2 - HIGH BYTE
+  00CF          +1    91     SMB0CR   DATA  0CFH   ; SMBUS 0 CLOCK RATE
+  00D0          +1    92     PSW      DATA  0D0H   ; PROGRAM STATUS WORD
+  00D1          +1    93     REF0CN   DATA  0D1H   ; VOLTAGE REFERENCE 0 CONTROL
+  00D2          +1    94     DAC0L    DATA  0D2H   ; DAC 0 REGISTER - LOW BYTE
+  00D3          +1    95     DAC0H    DATA  0D3H   ; DAC 0 REGISTER - HIGH BYTE
+  00D4          +1    96     DAC0CN   DATA  0D4H   ; DAC 0 CONTROL
+  00D5          +1    97     DAC1L    DATA  0D5H   ; DAC 1 REGISTER - LOW BYTE
+  00D6          +1    98     DAC1H    DATA  0D6H   ; DAC 1 REGISTER - HIGH BYTE
+  00D7          +1    99     DAC1CN   DATA  0D7H   ; DAC 1 CONTROL
+  00D8          +1   100     PCA0CN   DATA  0D8H   ; PCA 0 COUNTER CONTROL
+  00D9          +1   101     PCA0MD   DATA  0D9H   ; PCA 0 COUNTER MODE
+  00DA          +1   102     PCA0CPM0 DATA  0DAH   ; CONTROL REGISTER FOR PCA 0 MODULE 0
+  00DB          +1   103     PCA0CPM1 DATA  0DBH   ; CONTROL REGISTER FOR PCA 0 MODULE 1
+  00DC          +1   104     PCA0CPM2 DATA  0DCH   ; CONTROL REGISTER FOR PCA 0 MODULE 2
+  00DD          +1   105     PCA0CPM3 DATA  0DDH   ; CONTROL REGISTER FOR PCA 0 MODULE 3
+  00DE          +1   106     PCA0CPM4 DATA  0DEH   ; CONTROL REGISTER FOR PCA 0 MODULE 4
+  00E0          +1   107     ACC      DATA  0E0H   ; ACCUMULATOR
+  00E1          +1   108     XBR0     DATA  0E1H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 0
+  00E2          +1   109     XBR1     DATA  0E2H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 1
+  00E3          +1   110     XBR2     DATA  0E3H   ; DIGITAL CROSSBAR CONFIGURATION REGISTER 2
+  00E4          +1   111     RCAP4L   DATA  0E4H   ; TIMER 4 CAPTURE REGISTER - LOW BYTE
+  00E5          +1   112     RCAP4H   DATA  0E5H   ; TIMER 4 CAPTURE REGISTER - HIGH BYTE
+  00E6          +1   113     EIE1     DATA  0E6H   ; EXTERNAL INTERRUPT ENABLE 1
+  00E7          +1   114     EIE2     DATA  0E7H   ; EXTERNAL INTERRUPT ENABLE 2
+  00E8          +1   115     ADC0CN   DATA  0E8H   ; ADC 0 CONTROL
+  00E9          +1   116     PCA0L    DATA  0E9H   ; PCA 0 TIMER - LOW BYTE
+  00EA          +1   117     PCA0CPL0 DATA  0EAH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 0 - LOW BYTE
+  00EB          +1   118     PCA0CPL1 DATA  0EBH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 1 - LOW BYTE
+  00EC          +1   119     PCA0CPL2 DATA  0ECH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 2 - LOW BYTE
+  00ED          +1   120     PCA0CPL3 DATA  0EDH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 3 - LOW BYTE
+  00EE          +1   121     PCA0CPL4 DATA  0EEH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 4 - LOW BYTE
+  00EF          +1   122     RSTSRC   DATA  0EFH   ; RESET SOURCE 
+  00F0          +1   123     B        DATA  0F0H   ; B REGISTER
+  00F1          +1   124     SCON1    DATA  0F1H   ; SERIAL PORT 1 CONTROL
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     3
+
+  00F2          +1   125     SBUF1    DATA  0F2H   ; SERAIL PORT 1 DATA
+  00F3          +1   126     SADDR1   DATA  0F3H   ; SERAIL PORT 1 
+  00F4          +1   127     TL4      DATA  0F4H   ; TIMER 4 DATA - LOW BYTE
+  00F5          +1   128     TH4      DATA  0F5H   ; TIMER 4 DATA - HIGH BYTE
+  00F6          +1   129     EIP1     DATA  0F6H   ; EXTERNAL INTERRUPT PRIORITY REGISTER 1
+  00F7          +1   130     EIP2     DATA  0F7H   ; EXTERNAL INTERRUPT PRIORITY REGISTER 2
+  00F8          +1   131     SPI0CN   DATA  0F8H   ; SERIAL PERIPHERAL INTERFACE 0 CONTROL 
+  00F9          +1   132     PCA0H    DATA  0F9H   ; PCA 0 TIMER - HIGH BYTE
+  00FA          +1   133     PCA0CPH0 DATA  0FAH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 0 - HIGH BYTE
+  00FB          +1   134     PCA0CPH1 DATA  0FBH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 1 - HIGH BYTE
+  00FC          +1   135     PCA0CPH2 DATA  0FCH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 2 - HIGH BYTE
+  00FD          +1   136     PCA0CPH3 DATA  0FDH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 3 - HIGH BYTE
+  00FE          +1   137     PCA0CPH4 DATA  0FEH   ; CAPTURE/COMPARE REGISTER FOR PCA 0 MODULE 4 - HIGH BYTE
+  00FF          +1   138     WDTCN    DATA  0FFH   ; WATCHDOG TIMER CONTROL 
+                +1   139     ;
+                +1   140     ;------------------------------------------------------------------------------
+                +1   141     ;BIT DEFINITIONS
+                +1   142     ;
+                +1   143     ; TCON 88H
+  0088          +1   144     IT0      BIT   TCON.0 ; EXT. INTERRUPT 0 TYPE
+  0089          +1   145     IE0      BIT   TCON.1 ; EXT. INTERRUPT 0 EDGE FLAG
+  008A          +1   146     IT1      BIT   TCON.2 ; EXT. INTERRUPT 1 TYPE
+  008B          +1   147     IE1      BIT   TCON.3 ; EXT. INTERRUPT 1 EDGE FLAG
+  008C          +1   148     TR0      BIT   TCON.4 ; TIMER 0 ON/OFF CONTROL
+  008D          +1   149     TF0      BIT   TCON.5 ; TIMER 0 OVERFLOW FLAG
+  008E          +1   150     TR1      BIT   TCON.6 ; TIMER 1 ON/OFF CONTROL
+  008F          +1   151     TF1      BIT   TCON.7 ; TIMER 1 OVERFLOW FLAG
+                +1   152     ;
+                +1   153     ; SCON0 98H
+  0098          +1   154     RI       BIT   SCON0.0 ; RECEIVE INTERRUPT FLAG
+  0099          +1   155     TI       BIT   SCON0.1 ; TRANSMIT INTERRUPT FLAG
+  009A          +1   156     RB8      BIT   SCON0.2 ; RECEIVE BIT 8
+  009B          +1   157     TB8      BIT   SCON0.3 ; TRANSMIT BIT 8
+  009C          +1   158     REN      BIT   SCON0.4 ; RECEIVE ENABLE
+  009D          +1   159     SM2      BIT   SCON0.5 ; MULTIPROCESSOR COMMUNICATION ENABLE
+  009E          +1   160     SM1      BIT   SCON0.6 ; SERIAL MODE CONTROL BIT 1
+  009F          +1   161     SM0      BIT   SCON0.7 ; SERIAL MODE CONTROL BIT 0
+                +1   162     ; 
+                +1   163     ; IE A8H
+  00A8          +1   164     EX0      BIT   IE.0   ; EXTERNAL INTERRUPT 0 ENABLE
+  00A9          +1   165     ET0      BIT   IE.1   ; TIMER 0 INTERRUPT ENABLE
+  00AA          +1   166     EX1      BIT   IE.2   ; EXTERNAL INTERRUPT 1 ENABLE
+  00AB          +1   167     ET1      BIT   IE.3   ; TIMER 1 INTERRUPT ENABLE
+  00AC          +1   168     ES       BIT   IE.4   ; SERIAL PORT INTERRUPT ENABLE
+  00AD          +1   169     ET2      BIT   IE.5   ; TIMER 2 INTERRUPT ENABLE
+  00AF          +1   170     EA       BIT   IE.7   ; GLOBAL INTERRUPT ENABLE
+                +1   171     ;
+                +1   172     ; IP B8H
+  00B8          +1   173     PX0      BIT   IP.0   ; EXTERNAL INTERRUPT 0 PRIORITY
+  00B9          +1   174     PT0      BIT   IP.1   ; TIMER 0 PRIORITY
+  00BA          +1   175     PX1      BIT   IP.2   ; EXTERNAL INTERRUPT 1 PRIORITY
+  00BB          +1   176     PT1      BIT   IP.3   ; TIMER 1 PRIORITY
+  00BC          +1   177     PS       BIT   IP.4   ; SERIAL PORT PRIORITY
+  00BD          +1   178     PT2      BIT   IP.5   ; TIMER 2 PRIORITY
+                +1   179     ;
+                +1   180     ; SMB0CN C0H
+  00C0          +1   181     SMBTOE   BIT   SMB0CN.0 ; SMBUS 0 TIMEOUT ENABLE
+  00C1          +1   182     SMBFTE   BIT   SMB0CN.1 ; SMBUS 0 FREE TIMER ENABLE
+  00C2          +1   183     AA       BIT   SMB0CN.2 ; SMBUS 0 ASSERT/ACKNOWLEDGE FLAG
+  00C3          +1   184     SI       BIT   SMB0CN.3 ; SMBUS 0 INTERRUPT PENDING FLAG
+  00C4          +1   185     STO      BIT   SMB0CN.4 ; SMBUS 0 STOP FLAG
+  00C5          +1   186     STA      BIT   SMB0CN.5 ; SMBUS 0 START FLAG
+  00C6          +1   187     ENSMB    BIT   SMB0CN.6 ; SMBUS 0 ENABLE 
+                +1   188     ;
+                +1   189     ; T2CON C8H
+  00C8          +1   190     CPRL2    BIT   T2CON.0 ; CAPTURE OR RELOAD SELECT
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     4
+
+  00C9          +1   191     CT2      BIT   T2CON.1 ; TIMER OR COUNTER SELECT
+  00CA          +1   192     TR2      BIT   T2CON.2 ; TIMER 2 ON/OFF CONTROL
+  00CB          +1   193     EXEN2    BIT   T2CON.3 ; TIMER 2 EXTERNAL ENABLE FLAG
+  00CC          +1   194     TCLK     BIT   T2CON.4 ; TRANSMIT CLOCK FLAG
+  00CD          +1   195     RCLK     BIT   T2CON.5 ; RECEIVE CLOCK FLAG
+  00CE          +1   196     EXF2     BIT   T2CON.6 ; EXTERNAL FLAG
+  00CF          +1   197     TF2      BIT   T2CON.7 ; TIMER 2 OVERFLOW FLAG
+                +1   198     ;
+                +1   199     ; PSW D0H
+  00D0          +1   200     P        BIT   PSW.0  ; ACCUMULATOR PARITY FLAG
+  00D1          +1   201     F1       BIT   PSW.1  ; USER FLAG 1
+  00D2          +1   202     OV       BIT   PSW.2  ; OVERFLOW FLAG
+  00D3          +1   203     RS0      BIT   PSW.3  ; REGISTER BANK SELECT 0
+  00D4          +1   204     RS1      BIT   PSW.4  ; REGISTER BANK SELECT 1
+  00D5          +1   205     F0       BIT   PSW.5  ; USER FLAG 0
+  00D6          +1   206     AC       BIT   PSW.6  ; AUXILIARY CARRY FLAG
+  00D7          +1   207     CY       BIT   PSW.7  ; CARRY FLAG
+                +1   208     ;
+                +1   209     ; PCA0CN D8H
+  00D8          +1   210     CCF0     BIT   PCA0CN.0 ; PCA 0 MODULE 0 INTERRUPT FLAG
+  00D9          +1   211     CCF1     BIT   PCA0CN.1 ; PCA 0 MODULE 1 INTERRUPT FLAG
+  00DA          +1   212     CCF2     BIT   PCA0CN.2 ; PCA 0 MODULE 2 INTERRUPT FLAG
+  00DB          +1   213     CCF3     BIT   PCA0CN.3 ; PCA 0 MODULE 3 INTERRUPT FLAG
+  00DC          +1   214     CCF4     BIT   PCA0CN.4 ; PCA 0 MODULE 4 INTERRUPT FLAG
+  00DE          +1   215     CR       BIT   PCA0CN.6 ; PCA 0 COUNTER RUN CONTROL BIT
+  00DF          +1   216     CF       BIT   PCA0CN.7 ; PCA 0 COUNTER OVERFLOW FLAG
+                +1   217     ;
+                +1   218     ; ADC0CN E8H
+  00E8          +1   219     AD0LJST  BIT   ADC0CN.0 ; ADC 0 RIGHT JUSTIFY DATA BIT
+  00E9          +1   220     AD0WINT  BIT   ADC0CN.1 ; ADC 0 WINDOW COMPARE INTERRUPT FLAG
+  00EA          +1   221     AD0STM0  BIT   ADC0CN.2 ; ADC 0 START OF CONVERSION MODE BIT 0
+  00EB          +1   222     AD0STM1  BIT   ADC0CN.3 ; ADC 0 START OF CONVERSION MODE BIT 1
+  00EC          +1   223     AD0BUSY  BIT   ADC0CN.4 ; ADC 0 BUSY FLAG
+  00ED          +1   224     AD0INT   BIT   ADC0CN.5 ; ADC 0 CONVERISION COMPLETE INTERRUPT FLAG 
+  00EE          +1   225     AD0TM    BIT   ADC0CN.6 ; ADC 0 TRACK MODE
+  00EF          +1   226     AD0EN    BIT   ADC0CN.7 ; ADC 0 ENABLE
+                +1   227     ;
+                +1   228     ; SPI0CN F8H
+  00F8          +1   229     SPIEN    BIT   SPI0CN.0 ; SPI 0 SPI ENABLE
+  00F9          +1   230     MSTEN    BIT   SPI0CN.1 ; SPI 0 MASTER ENABLE
+  00FA          +1   231     SLVSEL   BIT   SPI0CN.2 ; SPI 0 SLAVE SELECT
+  00FB          +1   232     TXBSY    BIT   SPI0CN.3 ; SPI 0 TX BUSY FLAG
+  00FC          +1   233     RXOVRN   BIT   SPI0CN.4 ; SPI 0 RX OVERRUN FLAG
+  00FD          +1   234     MODF     BIT   SPI0CN.5 ; SPI 0 MODE FAULT FLAG
+  00FE          +1   235     WCOL     BIT   SPI0CN.6 ; SPI 0 WRITE COLLISION FLAG
+  00FF          +1   236     SPIF     BIT   SPI0CN.7 ; SPI 0 INTERRUPT FLAG
+                     237     
+0000                 238     ORG 0H                                     ; to start writing the code from the base 0 in f
+                             lash
+0000 FF3F065B        239     DB 0FFH,3FH,06H,5BH,4FH,66H,6DH,7DH,07H,7FH,6FH;,40,50,60;
+0004 4F666D7D                
+0008 077F6F                  
+                     240     ;addresses from 1 -> 10  (7-segment 1) adresses from 11 -> 13 for max value on 7-seg
+                     241     
+  0014               242     COUNTER EQU 14H
+000B 75140A          243     MOV COUNTER, #10
+                     244     
+  0018               245     MAX EQU 18H 
+000E 751804          246     MOV MAX, #4
+  0030               247     VAR EQU 30H
+0011 753002          248     MOV VAR, #2
+                     249     
+                     250     
+                     251     ;diable the watch dog
+0014 75FFDE          252     MOV WDTCN,#11011110B ;0DEH
+0017 75FFAD          253     MOV WDTCN,#10101101B ;0ADH
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     5
+
+                     254     
+                     255     ; config of clock
+001A 75B214          256     MOV OSCICN , #14H ; 2MH clock
+                     257     ;config cross bar
+001D 75E100          258     MOV XBR0 , #00H
+                     259     ;MOV XBR1 , #00H
+0020 75E340          260     MOV XBR2 , #040H  ; Cross bar enabled , weak Pull-up enabled 
+0023 75E264          261     MOV XBR1, #00000100        ; enable interrupt0 as input pin  INT0E
+                     262     
+                     263     ;SETB EA      ; global interrupt enable
+                     264     ;SETB EX0     ; enable interrupt0
+                     265     ;SETB IT0     ; Edge-triggered   
+                     266     
+0026 75A5FF          267     MOV P1MDOUT,#0FFh ; port1 -> output
+0029 75A6FF          268     MOV P2MDOUT,#0FFh ; port2 -> output
+002C 75A7F0          269     MOV P3MDOUT,#0f0h  ; port3 ->4 output , 4 input
+002F 75B000          270     MOV P3, #00H  
+                     271     
+  00B0               272     SWTCH BIT P3.0
+  00B1               273     DELAY_BUTTON BIT P3.1
+                     274     
+  00B4               275     LED_RED BIT P3.4
+0032 D2B4            276     SETB LED_RED
+  00B5               277     LED_GREEN BIT P3.5
+0034 C2B5            278     CLR LED_GREEN
+  0022               279     FLAG BIT 22H      ; 20H to 2FH 
+0036 C222            280     CLR FLAG
+  0023               281     DELAY_FLAG BIT 23H      ; 20H to 2FH 
+0038 C223            282     CLR DELAY_FLAG
+                     283     
+                     284     
+  0024               285     RED_LED_FLAG BIT 24H      ; 20H to 2FH 
+  0026               286     GREEN_LED_FLAG BIT 26H      ; 20H to 2FH 
+003A D224            287     SETB RED_LED_FLAG
+003C D226            288     SETB GREEN_LED_FLAG
+003E 7832            289     MOV R0, #50
+                     290     
+                     291     ;TAKE CARE!!!!!!! R1,R2,R3 is used by the seven segment function
+0040                 292     MAIN: 
+0040 115C            293             ACALL INIT
+0042 11C8            294         ACALL SEVEN_SEG2
+0044 11AE            295         ACALL SEVEN_SEG1
+0046 11F0            296         ACALL DELAY 
+0048                 297         INF_LOOP:
+0048 1164            298             ACALL INCREMENT         ; update variables
+                     299             ;ACALL TOG_LED
+004A 11AE            300             ACALL SEVEN_SEG1
+004C 1196            301             ACALL LED
+                     302             ; subtract p1,p2 if result=0 then run led(xor the 2 led pins)
+004E 75140A          303             MOV COUNTER, #10
+0051                 304             LOOP_TEN_TIMES:
+0051 117E            305                 ACALL SWITCH
+0053 11C8            306                 ACALL SEVEN_SEG2
+0055 11F0            307                 ACALL DELAY
+0057 D514F7          308                 DJNZ COUNTER, LOOP_TEN_TIMES
+005A 80EC            309         JMP INF_LOOP                ;#!return and start the program on
+                     310     
+                     311     
+005C                 312     INIT:           ; set the initial values for 7-seg1 and 2
+005C 7905            313         MOV R1, #05H    ; start value (4) for 7-seg1 
+005E 7A01            314         MOV R2, #01H    ; start value (0) for 7-seg2 
+0060 900000          315         MOV DPTR, #00H      
+0063 22              316         RET
+0064                 317     INCREMENT:
+0064 202224          318         JB FLAG, GET_MAX
+0067 202301          319         JB DELAY_FLAG, INC_DELAY_VAR
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     6
+
+006A 22              320         RET
+                     321     
+006B                 322     INC_DELAY_VAR:
+006B E530            323         MOV A, VAR
+006D 75F002          324         MOV B, #2
+0070 A4              325         MUL AB
+0071 F530            326         MOV VAR, A
+                     327     
+                     328         ;MOV A, VAR
+0073 5407            329         ANL A, #00000111b   ;;;;;;;;;
+                     330         ;SUBB A, 
+0075 6003            331         JZ DEFLT
+0077 C223            332         CLR DELAY_FLAG
+0079 22              333         RET
+007A                 334     DEFLT:
+007A 753002          335     MOV VAR, #2
+007D 22              336     RET
+                     337     
+007E                 338     SWITCH:
+007E 20B007          339         JB SWTCH, SET_FLAG
+0081 20B101          340         JB DELAY_BUTTON, SET_FLAG_BUTTON
+0084 22              341         RET
+0085                 342     SET_FLAG_BUTTON:
+0085 D223            343         SETB DELAY_FLAG
+0087 22              344         RET
+0088                 345     SET_FLAG:
+0088 D222            346         SETB FLAG
+008A 22              347         RET
+008B                 348     GET_MAX:
+008B 0518            349         INC MAX
+008D E518            350         MOV A, MAX
+008F 54F7            351         ANL A, #11110111b
+0091 6017            352         JZ DEFUALT
+0093 C222            353         CLR FLAG
+0095 22              354         RET
+                     355     
+0096                 356     LED:
+                     357         ;MOV A, #RED_LED_FLAG
+                     358         ;ADD A, #GREEN_LED_FLAG
+0096 E8              359         MOV A, R0
+0097 2B              360         ADD A, R3
+0098 9403            361         SUBB A, #3
+                     362         ;CJNE 
+                     363         ;CPL A
+                     364         ;ANL A,R2
+009A 6001            365         JZ TOG_LED
+009C 22              366         RET
+                     367         
+009D                 368     TOG_LED:
+                     369         ;MOV A,R1
+009D 7832            370         MOV R0, #50
+009F 7B32            371         MOV R3, #50
+00A1 D224            372         SETB RED_LED_FLAG
+00A3 D226            373         SETB GREEN_LED_FLAG
+                     374         ;JNZ TOGGLE
+                     375      ;   RET
+                     376     ;TOGGLE:
+00A5 B2B5            377         CPL LED_GREEN
+00A7 B2B4            378         CPL LED_RED 
+00A9 22              379         RET
+                     380     
+00AA                 381     DEFUALT:
+00AA 751803          382         MOV MAX, #3
+00AD 22              383         RET
+                     384     
+                     385     
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     7
+
+00AE                 386     SEVEN_SEG1:
+00AE 11C4            387         ACALL UPDATE_DPTR1
+00B0 11C2            388         ACALL GET_PTR1_VAL  ; get saved value of A
+00B2 93              389         MOVC A,@A+DPTR
+00B3 F590            390         MOV P1,A
+00B5 11C2            391         ACALL GET_PTR1_VAL
+00B7 14              392         DEC A
+00B8 11C0            393         ACALL SAV_PTR1_VAL
+00BA 6001            394             JZ RELOAD
+00BC 22              395         RET
+                     396     
+00BD                 397     RELOAD:
+00BD A918            398         MOV R1, MAX;#04H    ; start value for 7-seg1 pointer 3
+                     399         ;CLR GREEN_LED_FLAG
+                     400         ;INC R0
+                     401         ;MOV R3, #1
+00BF 22              402         RET
+                     403     
+00C0                 404     SAV_PTR1_VAL:
+00C0 F9              405         MOV R1, A
+00C1 22              406         RET
+                     407     
+00C2                 408     GET_PTR1_VAL:
+00C2 E9              409         MOV A, R1
+00C3 22              410         RET
+                     411     
+                     412     
+00C4                 413     UPDATE_DPTR1:        
+00C4 900000          414         MOV DPTR, #00
+00C7 22              415         RET
+                     416     
+00C8                 417     SEVEN_SEG2:
+00C8 11DB            418         ACALL UPDATE_DPTR2
+00CA 11D9            419         ACALL GET_PTR2_VAL
+00CC 93              420         MOVC A,@A+DPTR
+00CD F5A0            421         MOV P2,A
+00CF 11D9            422         ACALL GET_PTR2_VAL
+00D1 14              423         DEC A
+00D2 11D7            424         ACALL SAV_PTR2_VAL
+00D4 6009            425         jz RESET
+00D6 22              426         RET
+                     427     
+00D7                 428     SAV_PTR2_VAL:
+00D7 FA              429         MOV R2, A
+00D8 22              430         RET
+00D9                 431     GET_PTR2_VAL:
+00D9 EA              432         MOV A, R2
+00DA 22              433         RET
+00DB                 434     UPDATE_DPTR2:
+00DB 900000          435         MOV DPTR, #00H
+00DE 22              436         RET
+                     437     
+00DF                 438     RESET:
+00DF 7A0A            439         MOV R2, #10
+00E1 EA              440         MOV A, R2
+00E2 14              441         DEC A
+00E3 6001            442         JZ LAB
+                     443         ;CLR RED_LED_FLAG
+                     444         ;MOV R0, #2
+00E5 22              445         RET 
+                     446     
+00E6                 447     LAB:
+00E6 E9              448         MOV A, R1
+00E7 14              449         DEC A
+00E8 6001            450         JZ TOG
+00EA 22              451         RET
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     8
+
+                     452     
+00EB                 453     TOG:
+00EB B2B4            454         CPL LED_RED
+00ED B2B5            455         CPL LED_GREEN
+00EF 22              456         RET
+                     457     
+00F0                 458     DELAY :
+00F0 AC30            459             MOV R4,VAR
+00F2 7DC8            460             LOOP3:MOV R5,#200
+00F4 7FC6            461             LOOP2:MOV R7,#198
+00F6 DFFE            462             LOOP1:DJNZ R7,LOOP1
+00F8 DDFA            463             DJNZ R5,LOOP2
+00FA DCF6            464             DJNZ R4,LOOP3
+00FC 22              465             RET
+                     466     
+                     467     END
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE     9
+
+XREF SYMBOL TABLE LISTING
+---- ------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES / REFERENCES
+
+AA . . . . . . . .  B ADDR   00C0H.2 A      183#
+AC . . . . . . . .  B ADDR   00D0H.6 A      206#
+ACC. . . . . . . .  D ADDR   00E0H   A      107#
+AD0BUSY. . . . . .  B ADDR   00E8H.4 A      223#
+AD0EN. . . . . . .  B ADDR   00E8H.7 A      226#
+AD0INT . . . . . .  B ADDR   00E8H.5 A      224#
+AD0LJST. . . . . .  B ADDR   00E8H.0 A      219#
+AD0STM0. . . . . .  B ADDR   00E8H.2 A      221#
+AD0STM1. . . . . .  B ADDR   00E8H.3 A      222#
+AD0TM. . . . . . .  B ADDR   00E8H.6 A      225#
+AD0WINT. . . . . .  B ADDR   00E8H.1 A      220#
+ADC0CF . . . . . .  D ADDR   00BCH   A      73#
+ADC0CN . . . . . .  D ADDR   00E8H   A      115# 219 220 221 222 223 224 225 226
+ADC0GTH. . . . . .  D ADDR   00C5H   A      82#
+ADC0GTL. . . . . .  D ADDR   00C4H   A      81#
+ADC0H. . . . . . .  D ADDR   00BFH   A      76#
+ADC0L. . . . . . .  D ADDR   00BEH   A      75#
+ADC0LTH. . . . . .  D ADDR   00C7H   A      84#
+ADC0LTL. . . . . .  D ADDR   00C6H   A      83#
+ADC1 . . . . . . .  D ADDR   009CH   A      44#
+ADC1CF . . . . . .  D ADDR   00ABH   A      58#
+ADC1CN . . . . . .  D ADDR   00AAH   A      57#
+AMX0CF . . . . . .  D ADDR   00BAH   A      71#
+AMX0SL . . . . . .  D ADDR   00BBH   A      72#
+AMX1SL . . . . . .  D ADDR   00ACH   A      59#
+B. . . . . . . . .  D ADDR   00F0H   A      123# 324
+CCF0 . . . . . . .  B ADDR   00D8H.0 A      210#
+CCF1 . . . . . . .  B ADDR   00D8H.1 A      211#
+CCF2 . . . . . . .  B ADDR   00D8H.2 A      212#
+CCF3 . . . . . . .  B ADDR   00D8H.3 A      213#
+CCF4 . . . . . . .  B ADDR   00D8H.4 A      214#
+CF . . . . . . . .  B ADDR   00D8H.7 A      216#
+CKCON. . . . . . .  D ADDR   008EH   A      31#
+COUNTER. . . . . .  N NUMB   0014H   A      242# 243 303 308
+CPRL2. . . . . . .  B ADDR   00C8H.0 A      190#
+CPT0CN . . . . . .  D ADDR   009EH   A      46#
+CPT1CN . . . . . .  D ADDR   009FH   A      47#
+CR . . . . . . . .  B ADDR   00D8H.6 A      215#
+CT2. . . . . . . .  B ADDR   00C8H.1 A      191#
+CY . . . . . . . .  B ADDR   00D0H.7 A      207#
+DAC0CN . . . . . .  D ADDR   00D4H   A      96#
+DAC0H. . . . . . .  D ADDR   00D3H   A      95#
+DAC0L. . . . . . .  D ADDR   00D2H   A      94#
+DAC1CN . . . . . .  D ADDR   00D7H   A      99#
+DAC1H. . . . . . .  D ADDR   00D6H   A      98#
+DAC1L. . . . . . .  D ADDR   00D5H   A      97#
+DEFLT. . . . . . .  C ADDR   007AH   A      331 334#
+DEFUALT. . . . . .  C ADDR   00AAH   A      352 381#
+DELAY. . . . . . .  C ADDR   00F0H   A      296 307 458#
+DELAY_BUTTON . . .  B ADDR   00B0H.1 A      273# 340
+DELAY_FLAG . . . .  B ADDR   0024H.3 A      281# 282 319 332 343
+DPH. . . . . . . .  D ADDR   0083H   A      20#
+DPL. . . . . . . .  D ADDR   0082H   A      19#
+EA . . . . . . . .  B ADDR   00A8H.7 A      170#
+EIE1 . . . . . . .  D ADDR   00E6H   A      113#
+EIE2 . . . . . . .  D ADDR   00E7H   A      114#
+EIP1 . . . . . . .  D ADDR   00F6H   A      129#
+EIP2 . . . . . . .  D ADDR   00F7H   A      130#
+EMI0CF . . . . . .  D ADDR   00A3H   A      50#
+EMI0CN . . . . . .  D ADDR   00AFH   A      62#
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE    10
+
+EMI0TC . . . . . .  D ADDR   00A1H   A      49#
+ENSMB. . . . . . .  B ADDR   00C0H.6 A      187#
+ES . . . . . . . .  B ADDR   00A8H.4 A      168#
+ET0. . . . . . . .  B ADDR   00A8H.1 A      165#
+ET1. . . . . . . .  B ADDR   00A8H.3 A      167#
+ET2. . . . . . . .  B ADDR   00A8H.5 A      169#
+EX0. . . . . . . .  B ADDR   00A8H.0 A      164#
+EX1. . . . . . . .  B ADDR   00A8H.2 A      166#
+EXEN2. . . . . . .  B ADDR   00C8H.3 A      193#
+EXF2 . . . . . . .  B ADDR   00C8H.6 A      196#
+F0 . . . . . . . .  B ADDR   00D0H.5 A      205#
+F1 . . . . . . . .  B ADDR   00D0H.1 A      201#
+FLACL. . . . . . .  D ADDR   00B7H   A      68#
+FLAG . . . . . . .  B ADDR   0024H.2 A      279# 280 318 346 353
+FLSCL. . . . . . .  D ADDR   00B6H   A      67#
+GET_MAX. . . . . .  C ADDR   008BH   A      318 348#
+GET_PTR1_VAL . . .  C ADDR   00C2H   A      388 391 408#
+GET_PTR2_VAL . . .  C ADDR   00D9H   A      419 422 431#
+GREEN_LED_FLAG . .  B ADDR   0024H.6 A      286# 288 373
+IE . . . . . . . .  D ADDR   00A8H   A      55# 164 165 166 167 168 169 170
+IE0. . . . . . . .  B ADDR   0088H.1 A      145#
+IE1. . . . . . . .  B ADDR   0088H.3 A      147#
+INCREMENT. . . . .  C ADDR   0064H   A      298 317#
+INC_DELAY_VAR. . .  C ADDR   006BH   A      319 322#
+INF_LOOP . . . . .  C ADDR   0048H   A      297# 309
+INIT . . . . . . .  C ADDR   005CH   A      293 312#
+IP . . . . . . . .  D ADDR   00B8H   A      69# 173 174 175 176 177 178
+IT0. . . . . . . .  B ADDR   0088H.0 A      144#
+IT1. . . . . . . .  B ADDR   0088H.2 A      146#
+LAB. . . . . . . .  C ADDR   00E6H   A      442 447#
+LED. . . . . . . .  C ADDR   0096H   A      301 356#
+LED_GREEN. . . . .  B ADDR   00B0H.5 A      277# 278 377 455
+LED_RED. . . . . .  B ADDR   00B0H.4 A      275# 276 378 454
+LOOP1. . . . . . .  C ADDR   00F6H   A      462# 462
+LOOP2. . . . . . .  C ADDR   00F4H   A      461# 463
+LOOP3. . . . . . .  C ADDR   00F2H   A      460# 464
+LOOP_TEN_TIMES . .  C ADDR   0051H   A      304# 308
+MAIN . . . . . . .  C ADDR   0040H   A      292#
+MAX. . . . . . . .  N NUMB   0018H   A      245# 246 349 350 382 398
+MODF . . . . . . .  B ADDR   00F8H.5 A      234#
+MSTEN. . . . . . .  B ADDR   00F8H.1 A      230#
+OSCICN . . . . . .  D ADDR   00B2H   A      65# 256
+OSCXCN . . . . . .  D ADDR   00B1H   A      64#
+OV . . . . . . . .  B ADDR   00D0H.2 A      202#
+P. . . . . . . . .  B ADDR   00D0H.0 A      200#
+P0 . . . . . . . .  D ADDR   0080H   A      17#
+P0MDOUT. . . . . .  D ADDR   00A4H   A      51#
+P1 . . . . . . . .  D ADDR   0090H   A      33# 390
+P1MDIN . . . . . .  D ADDR   00BDH   A      74#
+P1MDOUT. . . . . .  D ADDR   00A5H   A      52# 267
+P2 . . . . . . . .  D ADDR   00A0H   A      48# 421
+P2MDOUT. . . . . .  D ADDR   00A6H   A      53# 268
+P3 . . . . . . . .  D ADDR   00B0H   A      63# 270 272 273 275 277
+P3IF . . . . . . .  D ADDR   00ADH   A      60#
+P3MDOUT. . . . . .  D ADDR   00A7H   A      54# 269
+P4 . . . . . . . .  D ADDR   0084H   A      21#
+P5 . . . . . . . .  D ADDR   0085H   A      22#
+P6 . . . . . . . .  D ADDR   0086H   A      23#
+P7 . . . . . . . .  D ADDR   0096H   A      39#
+P74OUT . . . . . .  D ADDR   00B5H   A      66#
+PCA0CN . . . . . .  D ADDR   00D8H   A      100# 210 211 212 213 214 215 216
+PCA0CPH0 . . . . .  D ADDR   00FAH   A      133#
+PCA0CPH1 . . . . .  D ADDR   00FBH   A      134#
+PCA0CPH2 . . . . .  D ADDR   00FCH   A      135#
+PCA0CPH3 . . . . .  D ADDR   00FDH   A      136#
+PCA0CPH4 . . . . .  D ADDR   00FEH   A      137#
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE    11
+
+PCA0CPL0 . . . . .  D ADDR   00EAH   A      117#
+PCA0CPL1 . . . . .  D ADDR   00EBH   A      118#
+PCA0CPL2 . . . . .  D ADDR   00ECH   A      119#
+PCA0CPL3 . . . . .  D ADDR   00EDH   A      120#
+PCA0CPL4 . . . . .  D ADDR   00EEH   A      121#
+PCA0CPM0 . . . . .  D ADDR   00DAH   A      102#
+PCA0CPM1 . . . . .  D ADDR   00DBH   A      103#
+PCA0CPM2 . . . . .  D ADDR   00DCH   A      104#
+PCA0CPM3 . . . . .  D ADDR   00DDH   A      105#
+PCA0CPM4 . . . . .  D ADDR   00DEH   A      106#
+PCA0H. . . . . . .  D ADDR   00F9H   A      132#
+PCA0L. . . . . . .  D ADDR   00E9H   A      116#
+PCA0MD . . . . . .  D ADDR   00D9H   A      101#
+PCON . . . . . . .  D ADDR   0087H   A      24#
+PS . . . . . . . .  B ADDR   00B8H.4 A      177#
+PSCTL. . . . . . .  D ADDR   008FH   A      32#
+PSW. . . . . . . .  D ADDR   00D0H   A      92# 200 201 202 203 204 205 206 207
+PT0. . . . . . . .  B ADDR   00B8H.1 A      174#
+PT1. . . . . . . .  B ADDR   00B8H.3 A      176#
+PT2. . . . . . . .  B ADDR   00B8H.5 A      178#
+PX0. . . . . . . .  B ADDR   00B8H.0 A      173#
+PX1. . . . . . . .  B ADDR   00B8H.2 A      175#
+RB8. . . . . . . .  B ADDR   0098H.2 A      156#
+RCAP2H . . . . . .  D ADDR   00CBH   A      88#
+RCAP2L . . . . . .  D ADDR   00CAH   A      87#
+RCAP4H . . . . . .  D ADDR   00E5H   A      112#
+RCAP4L . . . . . .  D ADDR   00E4H   A      111#
+RCLK . . . . . . .  B ADDR   00C8H.5 A      195#
+RED_LED_FLAG . . .  B ADDR   0024H.4 A      285# 287 372
+REF0CN . . . . . .  D ADDR   00D1H   A      93#
+RELOAD . . . . . .  C ADDR   00BDH   A      394 397#
+REN. . . . . . . .  B ADDR   0098H.4 A      158#
+RESET. . . . . . .  C ADDR   00DFH   A      425 438#
+RI . . . . . . . .  B ADDR   0098H.0 A      154#
+RS0. . . . . . . .  B ADDR   00D0H.3 A      203#
+RS1. . . . . . . .  B ADDR   00D0H.4 A      204#
+RSTSRC . . . . . .  D ADDR   00EFH   A      122#
+RXOVRN . . . . . .  B ADDR   00F8H.4 A      233#
+SADDR0 . . . . . .  D ADDR   00A9H   A      56#
+SADDR1 . . . . . .  D ADDR   00F3H   A      126#
+SADEN0 . . . . . .  D ADDR   00B9H   A      70#
+SADEN1 . . . . . .  D ADDR   00AEH   A      61#
+SAV_PTR1_VAL . . .  C ADDR   00C0H   A      393 404#
+SAV_PTR2_VAL . . .  C ADDR   00D7H   A      424 428#
+SBUF0. . . . . . .  D ADDR   0099H   A      41#
+SBUF1. . . . . . .  D ADDR   00F2H   A      125#
+SCON0. . . . . . .  D ADDR   0098H   A      40# 154 155 156 157 158 159 160 161
+SCON1. . . . . . .  D ADDR   00F1H   A      124#
+SET_FLAG . . . . .  C ADDR   0088H   A      339 345#
+SET_FLAG_BUTTON. .  C ADDR   0085H   A      340 342#
+SEVEN_SEG1 . . . .  C ADDR   00AEH   A      295 300 386#
+SEVEN_SEG2 . . . .  C ADDR   00C8H   A      294 306 417#
+SI . . . . . . . .  B ADDR   00C0H.3 A      184#
+SLVSEL . . . . . .  B ADDR   00F8H.2 A      231#
+SM0. . . . . . . .  B ADDR   0098H.7 A      161#
+SM1. . . . . . . .  B ADDR   0098H.6 A      160#
+SM2. . . . . . . .  B ADDR   0098H.5 A      159#
+SMB0ADR. . . . . .  D ADDR   00C3H   A      80#
+SMB0CN . . . . . .  D ADDR   00C0H   A      77# 181 182 183 184 185 186 187
+SMB0CR . . . . . .  D ADDR   00CFH   A      91#
+SMB0DAT. . . . . .  D ADDR   00C2H   A      79#
+SMB0STA. . . . . .  D ADDR   00C1H   A      78#
+SMBFTE . . . . . .  B ADDR   00C0H.1 A      182#
+SMBTOE . . . . . .  B ADDR   00C0H.0 A      181#
+SP . . . . . . . .  D ADDR   0081H   A      18#
+SPI0CFG. . . . . .  D ADDR   009AH   A      42#
+A51 MACRO ASSEMBLER  APP                                                                  04/20/2021 03:21:05 PAGE    12
+
+SPI0CKR. . . . . .  D ADDR   009DH   A      45#
+SPI0CN . . . . . .  D ADDR   00F8H   A      131# 229 230 231 232 233 234 235 236
+SPI0DAT. . . . . .  D ADDR   009BH   A      43#
+SPIEN. . . . . . .  B ADDR   00F8H.0 A      229#
+SPIF . . . . . . .  B ADDR   00F8H.7 A      236#
+STA. . . . . . . .  B ADDR   00C0H.5 A      186#
+STO. . . . . . . .  B ADDR   00C0H.4 A      185#
+SWITCH . . . . . .  C ADDR   007EH   A      305 338#
+SWTCH. . . . . . .  B ADDR   00B0H.0 A      272# 339
+T2CON. . . . . . .  D ADDR   00C8H   A      85# 190 191 192 193 194 195 196 197
+T4CON. . . . . . .  D ADDR   00C9H   A      86#
+TB8. . . . . . . .  B ADDR   0098H.3 A      157#
+TCLK . . . . . . .  B ADDR   00C8H.4 A      194#
+TCON . . . . . . .  D ADDR   0088H   A      25# 144 145 146 147 148 149 150 151
+TF0. . . . . . . .  B ADDR   0088H.5 A      149#
+TF1. . . . . . . .  B ADDR   0088H.7 A      151#
+TF2. . . . . . . .  B ADDR   00C8H.7 A      197#
+TH0. . . . . . . .  D ADDR   008CH   A      29#
+TH1. . . . . . . .  D ADDR   008DH   A      30#
+TH2. . . . . . . .  D ADDR   00CDH   A      90#
+TH4. . . . . . . .  D ADDR   00F5H   A      128#
+TI . . . . . . . .  B ADDR   0098H.1 A      155#
+TL0. . . . . . . .  D ADDR   008AH   A      27#
+TL1. . . . . . . .  D ADDR   008BH   A      28#
+TL2. . . . . . . .  D ADDR   00CCH   A      89#
+TL4. . . . . . . .  D ADDR   00F4H   A      127#
+TMOD . . . . . . .  D ADDR   0089H   A      26#
+TMR3CN . . . . . .  D ADDR   0091H   A      34#
+TMR3H. . . . . . .  D ADDR   0095H   A      38#
+TMR3L. . . . . . .  D ADDR   0094H   A      37#
+TMR3RLH. . . . . .  D ADDR   0093H   A      36#
+TMR3RLL. . . . . .  D ADDR   0092H   A      35#
+TOG. . . . . . . .  C ADDR   00EBH   A      450 453#
+TOG_LED. . . . . .  C ADDR   009DH   A      365 368#
+TR0. . . . . . . .  B ADDR   0088H.4 A      148#
+TR1. . . . . . . .  B ADDR   0088H.6 A      150#
+TR2. . . . . . . .  B ADDR   00C8H.2 A      192#
+TXBSY. . . . . . .  B ADDR   00F8H.3 A      232#
+UPDATE_DPTR1 . . .  C ADDR   00C4H   A      387 413#
+UPDATE_DPTR2 . . .  C ADDR   00DBH   A      418 434#
+VAR. . . . . . . .  N NUMB   0030H   A      247# 248 323 326 335 459
+WCOL . . . . . . .  B ADDR   00F8H.6 A      235#
+WDTCN. . . . . . .  D ADDR   00FFH   A      138# 252 253
+XBR0 . . . . . . .  D ADDR   00E1H   A      108# 258
+XBR1 . . . . . . .  D ADDR   00E2H   A      109# 261
+XBR2 . . . . . . .  D ADDR   00E3H   A      110# 260
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
