@@ -92,6 +92,14 @@ GET_DELAY_BUTTON: ;p0.3
     CLR DELAY_BUTTON
     RET
 
+;-------------------------------------------------------
+LED:
+    MOV A, R1  ; R1=04
+    ADD A, R2  ; R2=0A
+    SUBB A, MAX
+    SUBB A, #10
+    JZ TOG_LEDS
+    RET
 ;-------------------------
 ; toggle leds
 TOG_LEDS:
@@ -100,13 +108,6 @@ TOG_LEDS:
     MOV P5, A
     RET
 ;------------------------
-;-------------------------------------------------------
-LED:
-    MOV A, R1  ; R1=04
-    ADD A, R2  ; R2=0A
-    SUBB A, #14
-    JZ TOG_LEDS
-    RET
 
 INIT:           ; set the initial values for 7-seg1 and 2
     MOV R1, #05H    ; start value (4) for 7-seg1 
@@ -148,7 +149,7 @@ UPDATE_MAX:
     CLR INC_MAX_FLAG
     INC MAX
     MOV A, MAX
-    ANL A, #11110111b
+    ANL A, #11111001b
     JZ DEFUALT
     RET
 
