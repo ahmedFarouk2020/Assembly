@@ -4,8 +4,8 @@
 ![image](https://user-images.githubusercontent.com/61471002/143238951-bc27d0a2-c059-4f2b-b9c4-9e816217f2ff.png)
 
 ## Components
-1. Two 7-segment displays
-2. 8051 MCU
+1. 8051 MCU
+2. Two 7-segment displays
 3. Two push button
 4. Two LEDs
 
