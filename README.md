@@ -24,8 +24,10 @@ This feature aims to control the frequency of change of 7-segments values. This 
 ![image](https://user-images.githubusercontent.com/61471002/143240009-1ee5f745-0438-4d33-a632-e238b087e1bc.png)
 ![image](https://user-images.githubusercontent.com/61471002/143240054-74562459-6ad8-473f-9b16-38c8a5087198.png)
 <br>
->> ‘SWITCH’ function sets flags in case of pressing on reset or delay buttons <br>
->> ‘INCREMENT’ function executes the functions according to flags values
+```
+‘SWITCH’ function sets flags in case of pressing on reset or delay buttons
+‘INCREMENT’ function executes the functions according to flags values
+```
 
 ### 3.Controlling maximum value displayed on 7-segments <br>
 This is done by incrementing ‘MAX’ variable. The same logic as the above (SWITCH’ function sets flags and SWITCH’ function sets flags) <br>
@@ -37,10 +39,11 @@ This is done by incrementing ‘MAX’ variable. The same logic as the above (SW
 ![image](https://user-images.githubusercontent.com/61471002/143240323-802fed96-7cf1-46ef-bde8-b069f24556a6.png)
 ![image](https://user-images.githubusercontent.com/61471002/143240347-a3466bfd-1c8a-466c-b8ae-467e43d9743c.png)
 
->> The two flags is set in initialization <br>
->> When each of 7-segments reaches zero -> the the flag <br>
->> ‘LED’ function is continuously called in main and check for the flag <br>
->> If the condition is verified then toggle LEDs
-
+```
+The two flags is set in initialization
+When each of 7-segments reaches zero -> the the flag 
+‘LED’ function is continuously called in main and check for the flag 
+If the condition is verified then toggle LEDs
+```
 
 ## DEMO: [Link](https://drive.google.com/file/d/1nJPAogW0gTZAVJ3GOtxFHYK2MTAr9SIY/view?usp=sharing)
